@@ -1,32 +1,39 @@
-﻿using MicroservicesDemo.System.Diagnostics;
-using System;
+﻿using MassTransit;
+using MicroservicesDemo.DomainA.Messages;
+using MicroservicesDemo.System.Diagnostics;
 using Topshelf;
 
 namespace MicroserviceDemo.DomainA.Service.Configuration
 {
     public class DomainAServiceControl : ServiceControl
     {
-        private readonly Heartbeat _heartbeat;
+        private readonly IBusControl _busControl;
+        private readonly ApplicationDiagnostics _diagnostics;
 
-        public DomainAServiceControl(Heartbeat heartbeat)
+        public DomainAServiceControl(ApplicationDiagnostics diagnostics, IBusControl busControl)
         {
-            _heartbeat = heartbeat;
+            _busControl = busControl;
+            _diagnostics = diagnostics;
         }
 
         public bool Start(HostControl hostControl)
         {
-            Console.WriteLine($"[{DateTime.Now.ToString()}] Service A started.");
+            _diagnostics.Start();
+            _busControl.Start();
 
-            _heartbeat.Start();
+           _busControl.Publish(new AddTaskCommand
+            {
+                Name = "Test",
+                Severity = AddTaskCommand.TaskServerity.Medium
+            });
 
             return true;
         }
 
         public bool Stop(HostControl hostControl)
         {
-            Console.WriteLine($"[{DateTime.Now.ToString()}] Service A stopped.");
-
-            _heartbeat.Stop();
+            _diagnostics.Stop();
+            _busControl.Stop();
 
             return true;
         }

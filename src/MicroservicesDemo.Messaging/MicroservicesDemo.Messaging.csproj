@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A4CD24CB-029B-4C2C-BBAF-6EC54FCDF4AA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{3CC7AA08-3AB7-4A71-B917-78650D0A010F}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MicroservicesDemo.DomainA.Service</RootNamespace>
-    <AssemblyName>MicroservicesDemo.DomainA.Service</AssemblyName>
+    <RootNamespace>MicroservicesDemo.Messaging</RootNamespace>
+    <AssemblyName>MicroservicesDemo.Messaging</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,10 +20,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AppConfig>App.Debug.config</AppConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -50,8 +46,16 @@
       <HintPath>..\..\packages\MassTransit.3.3.5\lib\net452\MassTransit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MassTransit.AutofacIntegration, Version=3.3.1.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MassTransit.Autofac.3.3.5\lib\net452\MassTransit.AutofacIntegration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MassTransit.AzureServiceBusTransport, Version=3.3.1.0, Culture=neutral, PublicKeyToken=b8e0e9f2f1e657fa, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MassTransit.AzureServiceBus.3.3.5\lib\net452\MassTransit.AzureServiceBusTransport.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MassTransit.SeriLogIntegration, Version=3.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MassTransit.SerilogIntegration.3.3.5\lib\net452\MassTransit.SeriLogIntegration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -80,46 +84,17 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Topshelf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Topshelf.4.0.1\lib\net452\Topshelf.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\ContainerConfiguration.cs" />
-    <Compile Include="Configuration\DomainAServiceControl.cs" />
-    <Compile Include="Configuration\LogConfiguration.cs" />
-    <Compile Include="Consumers\AddTaskConsumer.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Bus\RegistrationExtensions.cs" />
+    <Compile Include="MessagingModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="App.Debug.config">
-      <DependentUpon>App.config</DependentUpon>
-    </None>
+    <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Properties\webjob-publish-settings.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MicroservicesDemo.DomainA.Messages\MicroservicesDemo.DomainA.Messages.csproj">
-      <Project>{2cf4098d-c5d5-4bca-a7cb-44e869d6d818}</Project>
-      <Name>MicroservicesDemo.DomainA.Messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MicroservicesDemo.Messaging\MicroservicesDemo.Messaging.csproj">
-      <Project>{3cc7aa08-3ab7-4a71-b917-78650d0a010f}</Project>
-      <Name>MicroservicesDemo.Messaging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MicroservicesDemo.System\MicroservicesDemo.System.csproj">
-      <Project>{9ae8d7cc-33f6-4303-8686-9721a93cf3ba}</Project>
-      <Name>MicroservicesDemo.System</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets" Condition="Exists('..\..\packages\Microsoft.Web.WebJobs.Publish.1.0.7\tools\webjobs.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

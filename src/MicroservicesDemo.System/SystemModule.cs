@@ -1,5 +1,7 @@
 ﻿using Autofac;
+using Autofac.Extras.Attributed;
 using MicroservicesDemo.System.Diagnostics;
+using MicroservicesDemo.System.Settings;
 
 namespace MicroservicesDemo.System
 {
@@ -7,7 +9,10 @@ namespace MicroservicesDemo.System
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<Heartbeat>();
+            builder.RegisterSettings();
+
+            builder.RegisterType<ApplicationDiagnostics>()
+                .WithAttributeFilter();
         }
     }
 }

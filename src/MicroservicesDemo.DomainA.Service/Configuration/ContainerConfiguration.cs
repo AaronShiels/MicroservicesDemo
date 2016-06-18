@@ -1,5 +1,9 @@
 ﻿using Autofac;
+using Autofac.Extras.Attributed;
+using MicroservicesDemo.DomainA.Service.Configuration;
+using MicroservicesDemo.Messaging;
 using MicroservicesDemo.System;
+using Serilog;
 
 namespace MicroserviceDemo.DomainA.Service.Configuration
 {
@@ -10,7 +14,14 @@ namespace MicroserviceDemo.DomainA.Service.Configuration
             var builder = new ContainerBuilder();
 
             builder.RegisterModule<SystemModule>();
-            builder.RegisterType<DomainAServiceControl>();
+            builder.RegisterModule<MessagingModule>();
+
+            builder.Register(ctx => LogConfiguration.Create())
+                .SingleInstance()
+                .As<ILogger>();
+
+            builder.RegisterType<DomainAServiceControl>()
+                .WithAttributeFilter();
 
             return builder.Build();
         }
