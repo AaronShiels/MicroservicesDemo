@@ -1,0 +1,8 @@
+﻿{
+  "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
+  "WebJobs": [
+    {
+      "filePath": "../MicroservicesDemo.DomainA.Service/MicroservicesDemo.DomainA.Service.csproj"
+    }
+  ]
+}
