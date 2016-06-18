@@ -1,9 +1,8 @@
 ﻿using MassTransit;
-using MicroservicesDemo.DomainA.Messages;
 using MicroservicesDemo.System.Diagnostics;
 using Topshelf;
 
-namespace MicroserviceDemo.DomainA.Service.Configuration
+namespace MicroserviceDemo.DomainA.Service
 {
     public class DomainAServiceControl : ServiceControl
     {
@@ -20,12 +19,6 @@ namespace MicroserviceDemo.DomainA.Service.Configuration
         {
             _diagnostics.Start();
             _busControl.Start();
-
-           _busControl.Publish(new AddTaskCommand
-            {
-                Name = "Test",
-                Severity = AddTaskCommand.TaskServerity.Medium
-            });
 
             return true;
         }

@@ -10,7 +10,7 @@ namespace MicroservicesDemo.Messaging
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterConsumers(Assembly.GetExecutingAssembly());
+            builder.RegisterConsumers(Assembly.GetEntryAssembly());
             builder.RegisterBus();
         }
     }

@@ -7,7 +7,7 @@ namespace MicroservicesDemo.DomainA.Service.Configuration
         public static ILogger Create()
         {
             return Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
+                .MinimumLevel.Information()
                 .WriteTo.ColoredConsole()
                 .WriteTo.RollingFile(@"logs\{Date}.txt")
                 .CreateLogger();

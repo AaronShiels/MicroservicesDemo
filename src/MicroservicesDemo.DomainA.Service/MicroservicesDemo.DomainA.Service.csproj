@@ -90,7 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration\ContainerConfiguration.cs" />
-    <Compile Include="Configuration\DomainAServiceControl.cs" />
+    <Compile Include="DomainAServiceControl.cs" />
     <Compile Include="Configuration\LogConfiguration.cs" />
     <Compile Include="Consumers\AddTaskConsumer.cs" />
     <Compile Include="Program.cs" />
