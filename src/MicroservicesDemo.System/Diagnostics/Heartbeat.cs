@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Timers;
 
-namespace MicroservicesDemo.ServiceA
+namespace MicroservicesDemo.System.Diagnostics
 {
     public class Heartbeat
     {
@@ -27,7 +27,7 @@ namespace MicroservicesDemo.ServiceA
 
         private void Callback(object o, ElapsedEventArgs e)
         {
-            Console.WriteLine($"[{DateTime.Now.ToLongDateString()}] ping.");
+            Console.WriteLine($"[{DateTime.Now.ToString()}] ping.");
         }
     }
 }
