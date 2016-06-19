@@ -16,7 +16,12 @@ namespace MicroserviceDemo.DomainA.Service.Configuration
             builder.RegisterModule<SystemModule>();
             builder.RegisterModule<MessagingModule>();
 
-            builder.Register(ctx => LogConfiguration.Create())
+            builder.Register(ctx => 
+            {
+                var logFilePath = ctx.ResolveKeyed<string>("Log.FilePath");
+                var azureStorageConnectionString = ctx.ResolveKeyed<string>("Log.AzureStorageConnection");
+                return LogConfiguration.Create(logFilePath, azureStorageConnectionString);
+            })
                 .SingleInstance()
                 .As<ILogger>();
 
