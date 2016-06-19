@@ -3,9 +3,9 @@
     public class AddTaskCommand
     {
         public string Name { get; set; }
-        public TaskServerity Severity { get; set; }
+        public TaskSeverity Severity { get; set; }
 
-        public enum TaskServerity
+        public enum TaskSeverity
         {
             Low,
             Medium,
