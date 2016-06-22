@@ -18,9 +18,10 @@ namespace MicroserviceDemo.DomainA.Service.Configuration
 
             builder.Register(ctx => 
             {
+                var applicationId = ctx.ResolveKeyed<string>("Project.Name");
                 var logFilePath = ctx.ResolveKeyed<string>("Log.FilePath");
                 var azureStorageConnectionString = ctx.ResolveKeyed<string>("Log.AzureStorageConnection");
-                return LogConfiguration.Create(logFilePath, azureStorageConnectionString);
+                return LogConfiguration.Create(applicationId, logFilePath, azureStorageConnectionString);
             })
                 .SingleInstance()
                 .As<ILogger>();

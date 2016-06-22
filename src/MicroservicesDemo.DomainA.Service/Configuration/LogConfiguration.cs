@@ -5,12 +5,13 @@ namespace MicroservicesDemo.DomainA.Service.Configuration
 {
     public static class LogConfiguration
     {
-        public static ILogger Create(string rollingFilePath, string azureStorageConnectionString)
+        public static ILogger Create(string applicationId, string rollingFilePath, string azureStorageConnectionString)
         {
             var azureStorage = CloudStorageAccount.Parse(azureStorageConnectionString);
 
             return Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
+                .MinimumLevel.Debug()
+                .Enrich.WithProperty("Application ID", applicationId)
                 .WriteTo.ColoredConsole()
                 .WriteTo.RollingFile(rollingFilePath)
                 .WriteTo.AzureTableStorage(azureStorage)
