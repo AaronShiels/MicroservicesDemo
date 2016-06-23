@@ -1,14 +1,18 @@
-﻿using Microsoft.WindowsAzure.Storage;
+﻿using System;
+using Microsoft.WindowsAzure.Storage;
 using Serilog;
+using Serilog.Events;
 
 namespace MicroservicesDemo.DomainA.Service.Configuration
 {
     public static class LogConfiguration
     {
-        public static ILogger Create(string applicationId, string rollingFilePath, string azureStorageConnectionString)
+        public static ILogger Create(string applicationId, string logLevel, string rollingFilePath, string azureStorageConnectionString)
         {
+            var resolvedLogLevel = MapLogLevel(logLevel);
+
             var logConfig = new LoggerConfiguration()
-                .MinimumLevel.Debug()
+                .MinimumLevel.Is(resolvedLogLevel)
                 .Enrich.WithProperty("Application ID", applicationId)
                 .WriteTo.ColoredConsole();
 
@@ -22,6 +26,12 @@ namespace MicroservicesDemo.DomainA.Service.Configuration
             }
 
             return Log.Logger = logConfig.CreateLogger();
+        }
+
+        private static LogEventLevel MapLogLevel(string logLevelString)
+        {
+            LogEventLevel logLevel;
+            return Enum.TryParse(logLevelString, true, out logLevel) ? logLevel : LogEventLevel.Information;
         }
     }
 }
