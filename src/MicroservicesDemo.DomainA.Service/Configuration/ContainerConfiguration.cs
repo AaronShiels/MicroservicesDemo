@@ -1,11 +1,10 @@
 ﻿using Autofac;
 using Autofac.Extras.Attributed;
-using MicroservicesDemo.DomainA.Service.Configuration;
 using MicroservicesDemo.Messaging;
 using MicroservicesDemo.System;
 using Serilog;
 
-namespace MicroserviceDemo.DomainA.Service.Configuration
+namespace MicroservicesDemo.DomainA.Service.Configuration
 {
     public static class ContainerConfiguration
     {
@@ -16,18 +15,18 @@ namespace MicroserviceDemo.DomainA.Service.Configuration
             builder.RegisterModule<SystemModule>();
             builder.RegisterModule<MessagingModule>();
 
-            builder.Register(ctx => 
+            builder.Register(ctx =>
             {
                 var applicationId = ctx.ResolveKeyed<string>("Project.Name");
                 var logFilePath = ctx.ResolveKeyed<string>("Log.FilePath");
                 var azureStorageConnectionString = ctx.ResolveKeyed<string>("Log.AzureStorageConnection");
                 return LogConfiguration.Create(applicationId, logFilePath, azureStorageConnectionString);
             })
-                .SingleInstance()
-                .As<ILogger>();
+                   .SingleInstance()
+                   .As<ILogger>();
 
             builder.RegisterType<DomainAServiceControl>()
-                .WithAttributeFilter();
+                   .WithAttributeFilter();
 
             return builder.Build();
         }

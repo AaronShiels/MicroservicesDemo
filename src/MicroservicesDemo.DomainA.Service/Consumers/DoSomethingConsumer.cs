@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MassTransit;
 using MicroservicesDemo.DomainA.Messages;
 using Serilog;

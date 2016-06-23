@@ -12,7 +12,7 @@ namespace MicroservicesDemo.System
             builder.RegisterSettings();
 
             builder.RegisterType<ApplicationDiagnostics>()
-                .WithAttributeFilter();
+                   .WithAttributeFilter();
         }
     }
 }

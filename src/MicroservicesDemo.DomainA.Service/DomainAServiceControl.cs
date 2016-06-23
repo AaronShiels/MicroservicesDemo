@@ -2,7 +2,7 @@
 using MicroservicesDemo.System.Diagnostics;
 using Topshelf;
 
-namespace MicroserviceDemo.DomainA.Service
+namespace MicroservicesDemo.DomainA.Service
 {
     public class DomainAServiceControl : ServiceControl
     {
