@@ -10,7 +10,7 @@ namespace MicroservicesDemo.DomainA.Service.Configuration
             var azureStorage = CloudStorageAccount.Parse(azureStorageConnectionString);
 
             return Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
+                .MinimumLevel.Information()
                 .Enrich.WithProperty("Application ID", applicationId)
                 .WriteTo.ColoredConsole()
                 .WriteTo.RollingFile(rollingFilePath)
