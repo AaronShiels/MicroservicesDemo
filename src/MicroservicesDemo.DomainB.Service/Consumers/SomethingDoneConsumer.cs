@@ -26,7 +26,7 @@ namespace MicroservicesDemo.DomainB.Service.Consumers
 
             var cash = (int)@event.Quality * 1000;
 
-            _log.Information("{person} was given {cash} because {thing} was {quality}", @event.PersonThatDidIt, cash, @event.ThingThatWasDone, @event.Quality);
+            _log.Information("{person} was given {cash} because {thing} was {quality}", @event.PersonThatDidIt, cash.ToString("c"), @event.ThingThatWasDone, @event.Quality);
         }
     }
 }
