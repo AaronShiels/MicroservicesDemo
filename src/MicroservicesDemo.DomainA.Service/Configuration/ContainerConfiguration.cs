@@ -1,8 +1,7 @@
 ﻿using Autofac;
-using Autofac.Extras.Attributed;
 using MicroservicesDemo.Messaging;
 using MicroservicesDemo.System;
-using Serilog;
+using MicroservicesDemo.Diagnostics;
 
 namespace MicroservicesDemo.DomainA.Service.Configuration
 {
@@ -14,20 +13,9 @@ namespace MicroservicesDemo.DomainA.Service.Configuration
 
             builder.RegisterModule<SystemModule>();
             builder.RegisterModule<MessagingModule>();
+            builder.RegisterModule<DiagnosticsModule>();
 
-            builder.Register(ctx =>
-            {
-                var applicationId = ctx.ResolveKeyed<string>("Project.Name");
-                var logLevel = ctx.ResolveKeyed<string>("Log.Level");
-                var logFilePath = ctx.ResolveKeyed<string>("Log.FilePath");
-                var azureStorageConnectionString = ctx.ResolveKeyed<string>("Log.AzureStorageConnection");
-                return LogConfiguration.Create(applicationId, logLevel, logFilePath, azureStorageConnectionString);
-            })
-                   .SingleInstance()
-                   .As<ILogger>();
-
-            builder.RegisterType<DomainAServiceControl>()
-                   .WithAttributeFilter();
+            builder.RegisterType<DomainAServiceControl>();
 
             return builder.Build();
         }

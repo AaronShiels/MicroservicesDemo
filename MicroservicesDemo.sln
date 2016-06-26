@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.DomainA.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.DomainB.Web", "src\MicroservicesDemo.DomainB.Web\MicroservicesDemo.DomainB.Web.csproj", "{25D619C9-EC00-4B63-A49E-ECD7DC4F0243}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.DomainB.Service", "src\MicroservicesDemo.DomainB.Service\MicroservicesDemo.DomainB.Service.csproj", "{569DC12B-9B27-4C0A-9864-EF52C44980B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.Diagnostics", "src\MicroservicesDemo.Diagnostics\MicroservicesDemo.Diagnostics.csproj", "{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{25D619C9-EC00-4B63-A49E-ECD7DC4F0243}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25D619C9-EC00-4B63-A49E-ECD7DC4F0243}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25D619C9-EC00-4B63-A49E-ECD7DC4F0243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{569DC12B-9B27-4C0A-9864-EF52C44980B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569DC12B-9B27-4C0A-9864-EF52C44980B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569DC12B-9B27-4C0A-9864-EF52C44980B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569DC12B-9B27-4C0A-9864-EF52C44980B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

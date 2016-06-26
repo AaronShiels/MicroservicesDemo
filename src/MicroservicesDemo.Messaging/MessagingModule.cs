@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Autofac;
 using MassTransit;
-using MicroservicesDemo.Messaging.Bus;
 using Module = Autofac.Module;
 
 namespace MicroservicesDemo.Messaging

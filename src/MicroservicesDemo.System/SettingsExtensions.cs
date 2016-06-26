@@ -1,9 +1,9 @@
 ﻿using System.Configuration;
 using Autofac;
 
-namespace MicroservicesDemo.System.Settings
+namespace MicroservicesDemo.System
 {
-    public static class SettingsExtensions
+    public static class RegistrationExtensions
     {
         public static void RegisterSettings(this ContainerBuilder builder)
         {

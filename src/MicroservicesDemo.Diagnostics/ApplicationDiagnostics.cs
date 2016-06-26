@@ -1,7 +1,7 @@
 ﻿using System.Timers;
 using Serilog;
 
-namespace MicroservicesDemo.System.Diagnostics
+namespace MicroservicesDemo.Diagnostics
 {
     public class ApplicationDiagnostics
     {

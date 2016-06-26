@@ -5,9 +5,9 @@ using MassTransit.AzureServiceBusTransport;
 using Microsoft.ServiceBus;
 using Serilog;
 
-namespace MicroservicesDemo.Messaging.Bus
+namespace MicroservicesDemo.Messaging
 {
-    public static class RegistrationExtensions
+    internal static class RegistrationExtensions
     {
         public static void RegisterBus(this ContainerBuilder builder)
         {
@@ -19,12 +19,12 @@ namespace MicroservicesDemo.Messaging.Bus
                 var projectName = ctx.ResolveKeyed<string>("Project.Name");
                 var logger = ctx.Resolve<ILogger>();
 
-                return MassTransit.Bus.Factory.CreateUsingAzureServiceBus(busConfig =>
+                return Bus.Factory.CreateUsingAzureServiceBus(busConfig =>
                 {
                     var host = busConfig.Host(busHost, hostConfig =>
                     {
-                        hostConfig.TokenProvider =TokenProvider.CreateSharedAccessSignatureTokenProvider(busKeyName, busKey);
-                        hostConfig.OperationTimeout =TimeSpan.FromSeconds(5);
+                        hostConfig.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(busKeyName, busKey);
+                        hostConfig.OperationTimeout = TimeSpan.FromSeconds(5);
                     });
 
                     busConfig.ReceiveEndpoint(host, projectName, epConfig => { epConfig.LoadFrom(ctx); });

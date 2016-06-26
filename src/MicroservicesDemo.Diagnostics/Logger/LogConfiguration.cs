@@ -5,7 +5,7 @@ using Serilog.Events;
 
 namespace MicroservicesDemo.DomainA.Service.Configuration
 {
-    public static class LogConfiguration
+    internal static class LogConfiguration
     {
         public static ILogger Create(string applicationId, string logLevel, string rollingFilePath, string azureStorageConnectionString)
         {

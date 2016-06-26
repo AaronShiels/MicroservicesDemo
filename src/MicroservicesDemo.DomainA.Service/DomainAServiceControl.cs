@@ -1,5 +1,5 @@
 ﻿using MassTransit;
-using MicroservicesDemo.System.Diagnostics;
+using MicroservicesDemo.Diagnostics;
 using Topshelf;
 
 namespace MicroservicesDemo.DomainA.Service
