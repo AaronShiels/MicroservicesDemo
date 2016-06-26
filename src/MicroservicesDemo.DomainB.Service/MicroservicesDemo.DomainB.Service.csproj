@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AppConfig>App.Debug.config</AppConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -66,17 +67,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ContainerConfiguration.cs" />
+    <Compile Include="Consumers\SomethingDoneConsumer.cs" />
+    <Compile Include="DomainBServiceControl.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MicroservicesDemo.Diagnostics\MicroservicesDemo.Diagnostics.csproj">
       <Project>{5ea42fcc-2d6e-4cd8-8019-88b1a60f7ad3}</Project>
       <Name>MicroservicesDemo.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MicroservicesDemo.DomainA.Messages\MicroservicesDemo.DomainA.Messages.csproj">
+      <Project>{2cf4098d-c5d5-4bca-a7cb-44e869d6d818}</Project>
+      <Name>MicroservicesDemo.DomainA.Messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\MicroservicesDemo.Messaging\MicroservicesDemo.Messaging.csproj">
       <Project>{3cc7aa08-3ab7-4a71-b917-78650d0a010f}</Project>
@@ -87,6 +98,7 @@
       <Name>MicroservicesDemo.System</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
