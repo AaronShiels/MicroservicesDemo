@@ -3,7 +3,7 @@ using Microsoft.WindowsAzure.Storage;
 using Serilog;
 using Serilog.Events;
 
-namespace MicroservicesDemo.DomainA.Service.Configuration
+namespace MicroservicesDemo.Diagnostics.Logger
 {
     internal static class LogConfiguration
     {

@@ -1,6 +1,6 @@
 ﻿using Autofac;
+using MicroservicesDemo.Diagnostics.Logger;
 using Serilog;
-using MicroservicesDemo.DomainA.Service.Configuration;
 
 namespace MicroservicesDemo.Diagnostics
 {

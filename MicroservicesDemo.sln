@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.System", "src\MicroservicesDemo.System\MicroservicesDemo.System.csproj", "{9AE8D7CC-33F6-4303-8686-9721A93CF3BA}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.DomainB.Service", "src\MicroservicesDemo.DomainB.Service\MicroservicesDemo.DomainB.Service.csproj", "{569DC12B-9B27-4C0A-9864-EF52C44980B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.Diagnostics", "src\MicroservicesDemo.Diagnostics\MicroservicesDemo.Diagnostics.csproj", "{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroservicesDemo.MassRelay", "src\MicroservicesDemo.MassRelay\MicroservicesDemo.MassRelay.csproj", "{9342AB83-65B3-475A-92E5-79376FF8FF92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EA42FCC-2D6E-4CD8-8019-88B1A60F7AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9342AB83-65B3-475A-92E5-79376FF8FF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9342AB83-65B3-475A-92E5-79376FF8FF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9342AB83-65B3-475A-92E5-79376FF8FF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9342AB83-65B3-475A-92E5-79376FF8FF92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
